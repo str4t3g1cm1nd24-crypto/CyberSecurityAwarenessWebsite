@@ -1,0 +1,903 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberSecurityAwarenessWebsite</title>
+    <style>
+      :root {
+        --bg: #f5f7fb;
+        --surface: #ffffff;
+        --ink: #14213d;
+        --muted: #5d687c;
+        --line: #dce3ef;
+        --blue: #2557d6;
+        --teal: #0c8f7a;
+        --orange: #f28c28;
+        --red: #d63d3d;
+        --green: #168a4a;
+        --shadow: 0 16px 40px rgba(20, 33, 61, 0.11);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--bg);
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.94);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(14px);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 14px 22px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .brand-icon {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        color: #fff;
+        background: var(--blue);
+        border-radius: 8px;
+        font-weight: 800;
+      }
+
+      .brand strong,
+      .brand small {
+        display: block;
+      }
+
+      .brand small {
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 0.93rem;
+        white-space: nowrap;
+      }
+
+      .nav a {
+        text-decoration: none;
+      }
+
+      .nav a:hover {
+        color: var(--blue);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+        gap: clamp(26px, 5vw, 64px);
+        align-items: center;
+        max-width: 1180px;
+        min-height: calc(100vh - 71px);
+        margin: 0 auto;
+        padding: clamp(46px, 7vw, 90px) 22px;
+      }
+
+      .hero-content {
+        max-width: 690px;
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--teal);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p,
+      li,
+      code {
+        overflow-wrap: anywhere;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.35rem, 6vw, 5.1rem);
+        line-height: 1;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        line-height: 1.1;
+      }
+
+      h3 {
+        margin: 0 0 8px;
+        font-size: 1.18rem;
+      }
+
+      .hero p,
+      .section-title p,
+      .two-column p,
+      .conclusion p {
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 18px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        font-weight: 800;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .btn.primary {
+        color: #fff;
+        background: var(--blue);
+      }
+
+      .btn.secondary {
+        color: var(--blue);
+        background: #fff;
+        border-color: var(--blue);
+      }
+
+      .email-demo,
+      .checker-card,
+      .quiz-card,
+      .domain-box,
+      .case-card,
+      .info-card,
+      .impact-grid article,
+      .prevention-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+      }
+
+      .email-demo {
+        overflow: hidden;
+      }
+
+      .email-top {
+        display: flex;
+        gap: 8px;
+        padding: 16px;
+        background: #202a44;
+      }
+
+      .email-top span {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--orange);
+      }
+
+      .email-top span:nth-child(2) {
+        background: var(--red);
+      }
+
+      .email-top span:nth-child(3) {
+        background: var(--teal);
+      }
+
+      .email-body {
+        padding: clamp(22px, 4vw, 34px);
+      }
+
+      .sender {
+        color: var(--red);
+        font-weight: 800;
+      }
+
+      .fake-url {
+        margin: 18px 0;
+        padding: 12px;
+        color: var(--blue);
+        background: #eef4ff;
+        border: 1px solid #cbd9ff;
+        border-radius: 8px;
+        font-family: "Courier New", monospace;
+      }
+
+      .section {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: clamp(54px, 8vw, 96px) 22px;
+      }
+
+      .soft-bg {
+        max-width: none;
+        background: #eaf0f8;
+      }
+
+      .soft-bg > * {
+        max-width: 1180px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .section-title {
+        margin-bottom: 30px;
+      }
+
+      .section-title p {
+        max-width: 720px;
+      }
+
+      .two-column {
+        display: grid;
+        grid-template-columns: minmax(0, 0.82fr) minmax(320px, 1.18fr);
+        gap: 30px;
+      }
+
+      .process-list {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        counter-reset: process;
+      }
+
+      .process-list li {
+        counter-increment: process;
+        position: relative;
+        padding: 16px 16px 16px 58px;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .process-list li::before {
+        content: counter(process);
+        position: absolute;
+        left: 16px;
+        top: 15px;
+        display: grid;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        color: #fff;
+        background: var(--teal);
+        border-radius: 8px;
+        font-weight: 800;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .info-card {
+        padding: 22px;
+      }
+
+      .card-number {
+        display: inline-block;
+        margin-bottom: 14px;
+        color: var(--blue);
+        font-weight: 900;
+      }
+
+      .info-card p,
+      .impact-grid p,
+      .case-card p {
+        color: var(--muted);
+      }
+
+      .warning-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(310px, 0.85fr);
+        gap: 18px;
+        align-items: start;
+      }
+
+      .check-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .check-list li,
+      .prevention-card {
+        position: relative;
+        padding: 16px 16px 16px 44px;
+      }
+
+      .check-list li {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+
+      .check-list li::before,
+      .prevention-card::before {
+        content: "!";
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        display: grid;
+        width: 20px;
+        height: 20px;
+        place-items: center;
+        color: #fff;
+        background: var(--orange);
+        border-radius: 50%;
+        font-size: 0.78rem;
+        font-weight: 900;
+      }
+
+      .domain-box {
+        padding: 24px;
+      }
+
+      .url-pair {
+        display: grid;
+        gap: 5px;
+        margin: 14px 0;
+        padding: 14px;
+        background: #eefaf7;
+        border: 1px solid #c9ebe3;
+        border-radius: 8px;
+      }
+
+      .url-pair span {
+        color: var(--green);
+        font-weight: 800;
+      }
+
+      .url-pair.danger {
+        background: #fff1f1;
+        border-color: #ffd0d0;
+      }
+
+      .url-pair.danger span {
+        color: var(--red);
+      }
+
+      .impact-grid,
+      .prevention-grid,
+      .example-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .impact-grid article,
+      .case-card {
+        padding: 20px;
+      }
+
+      .prevention-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .prevention-card {
+        box-shadow: none;
+      }
+
+      .prevention-card::before {
+        content: "";
+        background: var(--green);
+      }
+
+      .examples-section {
+        max-width: none;
+        background: #14213d;
+        color: #fff;
+      }
+
+      .examples-section > * {
+        max-width: 1180px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .examples-section .eyebrow {
+        color: #6ee7d8;
+      }
+
+      .examples-section .case-card {
+        color: var(--ink);
+      }
+
+      .example-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .checker-section {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+        gap: 28px;
+        align-items: start;
+      }
+
+      .checker-card {
+        padding: 26px;
+      }
+
+      .checker-card label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 800;
+      }
+
+      .checker-card input {
+        width: 100%;
+        min-height: 48px;
+        padding: 0 14px;
+        color: var(--ink);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        font: inherit;
+      }
+
+      .strength-meter {
+        height: 12px;
+        margin-top: 16px;
+        overflow: hidden;
+        background: #e8edf5;
+        border-radius: 999px;
+      }
+
+      .strength-meter span {
+        display: block;
+        width: 0;
+        height: 100%;
+        background: var(--red);
+        transition: width 0.2s ease, background 0.2s ease;
+      }
+
+      .strength-text {
+        margin: 12px 0;
+        font-weight: 800;
+      }
+
+      .rules {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .rules li {
+        color: var(--muted);
+      }
+
+      .rules li::before {
+        content: "x ";
+        color: var(--red);
+        font-weight: 900;
+      }
+
+      .rules li.valid {
+        color: var(--green);
+      }
+
+      .rules li.valid::before {
+        content: "OK ";
+        color: var(--green);
+      }
+
+      .quiz-card {
+        max-width: 860px;
+        padding: clamp(22px, 4vw, 34px);
+      }
+
+      fieldset {
+        display: grid;
+        gap: 10px;
+        margin: 0 0 22px;
+        padding: 0 0 22px;
+        border: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      legend {
+        margin-bottom: 10px;
+        font-weight: 900;
+      }
+
+      label {
+        color: var(--muted);
+      }
+
+      input[type="radio"] {
+        margin-right: 8px;
+      }
+
+      .quiz-result {
+        min-height: 28px;
+        color: var(--blue);
+        font-weight: 900;
+      }
+
+      .conclusion {
+        text-align: center;
+      }
+
+      .conclusion p {
+        max-width: 820px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 24px max(22px, calc((100vw - 1180px) / 2 + 22px));
+        color: #fff;
+        background: #0e172c;
+      }
+
+      .footer p {
+        margin: 0;
+      }
+
+      @media (max-width: 960px) {
+        .header-inner {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .nav {
+          width: 100%;
+          overflow-x: auto;
+          padding-bottom: 4px;
+        }
+
+        .hero,
+        .two-column,
+        .warning-layout,
+        .checker-section {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        .card-grid,
+        .impact-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        h1 {
+          font-size: 2.45rem;
+        }
+
+        .card-grid,
+        .impact-grid,
+        .prevention-grid,
+        .example-grid,
+        .check-list {
+          grid-template-columns: 1fr;
+        }
+
+        .footer {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#intro">
+          <span class="brand-icon">PA</span>
+          <span>
+            <strong>Phishing Awareness Website</strong>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#intro">Introduction</a>
+          <a href="#types">Types</a>
+          <a href="#signs">Signs</a>
+          <a href="#prevention">Prevention</a>
+          <a href="#checker">Password Checker</a>
+          <a href="#quiz">Quiz</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="intro" class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Internship Project</p>
+          <h1>Learn to identify and prevent phishing attacks</h1>
+          <p>
+            Phishing is a social engineering attack where criminals pretend to be
+            trusted people, companies, or services so they can steal passwords,
+            OTPs, banking details, personal data, or business information.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#checker">Check a Password</a>
+            <a class="btn secondary" href="#quiz">Take the Quiz</a>
+          </div>
+        </div>
+        <div class="email-demo" aria-label="Suspicious email example">
+          <div class="email-top"><span></span><span></span><span></span></div>
+          <div class="email-body">
+            <p class="sender">From: account-help@secure-bank-alert.example</p>
+            <h2>Immediate verification required</h2>
+            <p>Your account will be blocked today. Confirm your password and OTP using the secure link below.</p>
+            <div class="fake-url">https://bank-login-verify.example/update</div>
+            <ul>
+              <li>Uses fear and urgency</li>
+              <li>Asks for private information</li>
+              <li>Link does not match the real bank domain</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section two-column">
+        <div>
+          <p class="eyebrow">Process</p>
+          <h2>How phishing usually works</h2>
+          <p>
+            Most phishing attacks follow a simple pattern. The attacker creates a
+            believable message, sends it to the victim, and pushes the victim
+            toward a fake login page, unsafe attachment, or phone conversation.
+          </p>
+        </div>
+        <ol class="process-list">
+          <li>Attacker prepares a fake email, website, SMS, or call script.</li>
+          <li>The victim receives a message that looks trustworthy.</li>
+          <li>The message creates urgency, fear, curiosity, or a reward.</li>
+          <li>The victim clicks a link, opens a file, or shares information.</li>
+          <li>The attacker steals credentials, money, data, or account access.</li>
+        </ol>
+      </section>
+
+      <section id="types" class="section soft-bg">
+        <div class="section-title">
+          <p class="eyebrow">Attack Categories</p>
+          <h2>Types of phishing</h2>
+        </div>
+        <div class="card-grid">
+          <article class="info-card"><span class="card-number">01</span><h3>Email Phishing</h3><p>Fake emails imitate banks, shopping sites, colleges, or office tools to steal login details.</p><strong>Common result:</strong><p>Password theft, identity misuse, and financial loss.</p></article>
+          <article class="info-card"><span class="card-number">02</span><h3>Spear Phishing</h3><p>Targeted messages use personal details about one person, team, or organization.</p><strong>Common result:</strong><p>Data leaks, account takeover, and business compromise.</p></article>
+          <article class="info-card"><span class="card-number">03</span><h3>Whaling</h3><p>Attackers focus on senior employees such as managers, directors, or executives.</p><strong>Common result:</strong><p>Large payments, confidential documents, or executive account abuse.</p></article>
+          <article class="info-card"><span class="card-number">04</span><h3>Smishing</h3><p>Phishing through SMS or chat messages, often using delivery, bank, or prize alerts.</p><strong>Common result:</strong><p>Mobile malware, stolen OTPs, and fake payment pages.</p></article>
+          <article class="info-card"><span class="card-number">05</span><h3>Vishing</h3><p>Fraud phone calls pretend to be bank staff, support agents, recruiters, or officials.</p><strong>Common result:</strong><p>OTP theft, remote access scams, and banking fraud.</p></article>
+          <article class="info-card"><span class="card-number">06</span><h3>Clone Phishing</h3><p>A real message is copied, but links or attachments are replaced with malicious versions.</p><strong>Common result:</strong><p>Credential theft, malware infection, and unauthorized access.</p></article>
+        </div>
+      </section>
+
+      <section id="signs" class="section">
+        <div class="section-title"><p class="eyebrow">Warning Signs</p><h2>Signs of a phishing attack</h2></div>
+        <div class="warning-layout">
+          <ul class="check-list">
+            <li>Unknown or slightly misspelled sender address</li>
+            <li>Urgent requests such as "act now" or "account blocked"</li>
+            <li>Spelling mistakes, awkward grammar, or unusual formatting</li>
+            <li>Links that lead to strange or shortened websites</li>
+            <li>Unexpected attachments or downloads</li>
+            <li>Requests for passwords, OTPs, PINs, or card details</li>
+            <li>Offers that sound unrealistic or too easy</li>
+            <li>Threats, pressure, or emotional manipulation</li>
+          </ul>
+          <div class="domain-box">
+            <h3>How to identify fake websites</h3>
+            <div class="url-pair"><span>Real</span><code>https://www.amazon.in</code></div>
+            <div class="url-pair danger"><span>Fake</span><code>https://amazon-login-security.example</code></div>
+            <p>Check the full domain name, look for extra words or spelling changes, and never enter credentials just because a page has a lock icon. HTTPS protects the connection, but it does not prove the website is genuine.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section soft-bg">
+        <div class="section-title"><p class="eyebrow">Impact</p><h2>Effects of phishing</h2></div>
+        <div class="impact-grid">
+          <article><h3>Financial Loss</h3><p>Stolen card or banking details can allow unauthorized transactions.</p></article>
+          <article><h3>Identity Theft</h3><p>Personal data can be used to create fake accounts or impersonate a victim.</p></article>
+          <article><h3>Data Breach</h3><p>One compromised account may expose private company or customer records.</p></article>
+          <article><h3>Malware Infection</h3><p>Unsafe attachments can install spyware, ransomware, or remote access tools.</p></article>
+          <article><h3>Reputation Damage</h3><p>Organizations can lose trust when users, employees, or clients are affected.</p></article>
+        </div>
+      </section>
+
+      <section id="prevention" class="section">
+        <div class="section-title"><p class="eyebrow">Protection</p><h2>Prevention methods</h2></div>
+        <div class="prevention-grid">
+          <div class="prevention-card">Use strong and unique passwords for every account.</div>
+          <div class="prevention-card">Enable two-factor authentication whenever available.</div>
+          <div class="prevention-card">Verify the sender before replying or sharing data.</div>
+          <div class="prevention-card">Never share OTPs, passwords, PINs, or recovery codes.</div>
+          <div class="prevention-card">Avoid clicking links from suspicious messages.</div>
+          <div class="prevention-card">Keep browsers, apps, and operating systems updated.</div>
+          <div class="prevention-card">Use trusted security tools and scan suspicious files.</div>
+          <div class="prevention-card">Type official website addresses manually for sensitive logins.</div>
+          <div class="prevention-card">Report suspicious emails to IT or the service provider.</div>
+          <div class="prevention-card">Stay informed about current cyber threats and scams.</div>
+        </div>
+      </section>
+
+      <section class="section examples-section">
+        <div class="section-title"><p class="eyebrow">Case Studies</p><h2>Real-world phishing style examples</h2></div>
+        <div class="example-grid">
+          <article class="case-card"><h3>Document Sharing Scam</h3><p>Users receive a message that appears to share an online document. The fake page asks for account permissions or login credentials.</p><strong>Impact:</strong><p>Account access, exposed contacts, and wider message spreading.</p></article>
+          <article class="case-card"><h3>Fake Invoice Fraud</h3><p>Attackers imitate vendors or executives and send payment requests with changed bank details.</p><strong>Impact:</strong><p>Business losses, payment delays, and investigation costs.</p></article>
+        </div>
+      </section>
+
+      <section id="checker" class="section checker-section">
+        <div class="section-title">
+          <p class="eyebrow">Tool</p>
+          <h2>Password strength checker</h2>
+          <p>A strong password should be long, difficult to guess, and include different character types. This checker runs only in your browser.</p>
+        </div>
+        <div class="checker-card">
+          <label for="passwordInput">Enter Password</label>
+          <input id="passwordInput" type="password" placeholder="Type a sample password" autocomplete="off" />
+          <div class="strength-meter" aria-hidden="true"><span id="strengthBar"></span></div>
+          <p id="strengthText" class="strength-text">Start typing to check strength.</p>
+          <ul class="rules" id="rules">
+            <li data-rule="length">At least 8 characters</li>
+            <li data-rule="uppercase">Uppercase letter</li>
+            <li data-rule="lowercase">Lowercase letter</li>
+            <li data-rule="number">Number</li>
+            <li data-rule="special">Special character</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="quiz" class="section soft-bg">
+        <div class="section-title"><p class="eyebrow">Quiz</p><h2>Phishing awareness quiz</h2></div>
+        <form class="quiz-card" id="quizForm">
+          <fieldset><legend>1. What is phishing?</legend><label><input type="radio" name="q1" value="0" /> Antivirus software</label><label><input type="radio" name="q1" value="1" /> A cyber attack used to steal information</label><label><input type="radio" name="q1" value="0" /> A programming language</label></fieldset>
+          <fieldset><legend>2. Which information should never be shared with an unknown caller?</legend><label><input type="radio" name="q2" value="0" /> City name</label><label><input type="radio" name="q2" value="1" /> OTP or password</label><label><input type="radio" name="q2" value="0" /> Favorite color</label></fieldset>
+          <fieldset><legend>3. Which item is a phishing warning sign?</legend><label><input type="radio" name="q3" value="1" /> Suspicious link</label><label><input type="radio" name="q3" value="0" /> Strong password</label><label><input type="radio" name="q3" value="0" /> Official software update</label></fieldset>
+          <fieldset><legend>4. What should you do before entering login details?</legend><label><input type="radio" name="q4" value="1" /> Check the website URL carefully</label><label><input type="radio" name="q4" value="0" /> Trust the page only because it has a logo</label><label><input type="radio" name="q4" value="0" /> Ignore spelling mistakes</label></fieldset>
+          <button class="btn primary" type="submit">Submit Quiz</button>
+          <p id="quizResult" class="quiz-result" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="section conclusion">
+        <p class="eyebrow">Conclusion</p>
+        <h2>Cybersecurity awareness is the first layer of defense</h2>
+        <p>Phishing remains one of the most common online threats because it attacks human trust. By checking senders, inspecting URLs, using strong passwords, enabling two-factor authentication, and reporting suspicious messages, users can greatly reduce their risk.</p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Phishing Awareness and Password Strength Checker Project</p>
+      <p>Created for Cyber Security Education</p>
+    </footer>
+
+    <script>
+      const passwordInput = document.querySelector("#passwordInput");
+      const strengthBar = document.querySelector("#strengthBar");
+      const strengthText = document.querySelector("#strengthText");
+      const ruleItems = document.querySelectorAll("#rules li");
+      const quizForm = document.querySelector("#quizForm");
+      const quizResult = document.querySelector("#quizResult");
+
+      const checks = {
+        length: (value) => value.length >= 8,
+        uppercase: (value) => /[A-Z]/.test(value),
+        lowercase: (value) => /[a-z]/.test(value),
+        number: (value) => /[0-9]/.test(value),
+        special: (value) => /[^A-Za-z0-9]/.test(value),
+      };
+
+      function updatePasswordStrength() {
+        const value = passwordInput.value;
+        let score = 0;
+
+        ruleItems.forEach((item) => {
+          const rule = item.dataset.rule;
+          const passed = checks[rule](value);
+          item.classList.toggle("valid", passed);
+          if (passed) {
+            score += 1;
+          }
+        });
+
+        const percent = (score / ruleItems.length) * 100;
+        strengthBar.style.width = `${percent}%`;
+
+        if (!value) {
+          strengthText.textContent = "Start typing to check strength.";
+          strengthBar.style.background = "#d63d3d";
+          return;
+        }
+
+        if (score <= 2) {
+          strengthText.textContent = "Weak password";
+          strengthBar.style.background = "#d63d3d";
+        } else if (score <= 4) {
+          strengthText.textContent = "Medium password";
+          strengthBar.style.background = "#f28c28";
+        } else {
+          strengthText.textContent = "Strong password";
+          strengthBar.style.background = "#168a4a";
+        }
+      }
+
+      passwordInput.addEventListener("input", updatePasswordStrength);
+
+      quizForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(quizForm);
+        const totalQuestions = 4;
+        let score = 0;
+
+        for (let index = 1; index <= totalQuestions; index += 1) {
+          if (formData.get(`q${index}`) === "1") {
+            score += 1;
+          }
+        }
+
+        quizResult.textContent = `You scored ${score} out of ${totalQuestions}. ${
+          score === totalQuestions
+            ? "Excellent awareness!"
+            : "Review the warning signs and try again."
+        }`;
+      });
+    </script>
+  </body>
+</html>
